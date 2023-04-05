@@ -1,6 +1,8 @@
 # junctionxexeter
 Junction Hackathon 
 
+use index.html and app.py for both demo
+
 Prototype 1: Twitter Sentiment Analysis 
 
 Dataset:
