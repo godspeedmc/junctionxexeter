@@ -1,7 +1,7 @@
 # junctionxexeter
 Junction Hackathon 
 
-use index.html and app.py for both demo
+Note use index.html in the "templates" folder" and app.py for both demo
 
 Prototype 1: Twitter Sentiment Analysis 
 
