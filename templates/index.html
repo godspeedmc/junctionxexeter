@@ -1,0 +1,121 @@
+<!-- Prototype 1 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 16px;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Twitter Sentiment Analysis</h1>
+        <form action="/analyze" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit">Analyze</button>
+        </form>
+        {% if sentiment %}
+        <h2>Sentiment Analysis Result</h2>
+        <p>{{ sentiment }}</p>
+        {% endif %}
+        {% if mood %}
+        <h2>Mood Category</h2>
+        <p>{{ mood }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+<!-- Prototype 2 --> 
+
+<!-- <html>
+<head>
+	<title>Depression Detector</title>
+</head>
+<body>
+	<h1>Depression Detector</h1>
+	
+	<form action="/analyze" method="post">
+		<label for="username">Instagram Username:</label>
+		<input type="text" name="username" id="username" required>
+		<button type="submit">Analyze</button>
+	</form>
+	
+	{% if results %}
+		<h2>Results for {{ username }}</h2>
+		<p>Depression score: {{ results.depression_score }}</p>
+		{% if results.is_depressed %}
+			<p style="color:red;">This user might be depressed.</p>
+		{% else %}
+			<p style="color:green;">This user is unlikely to be depressed.</p>
+		{% endif %}
+	{% endif %}
+	
+	<h2>Resources</h2>
+	<ul>
+		<li><a href="https://www.nimh.nih.gov/health/topics/depression/index.shtml">National Institute of Mental Health: Depression</a></li>
+		<li><a href="https://suicidepreventionlifeline.org/">National Suicide Prevention Lifeline</a></li>
+	</ul>
+</body>
+</html> -->
+
+

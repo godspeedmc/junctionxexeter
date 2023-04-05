@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Twitter Data</title>
+    <style>
+      /* Add any CSS styles here */
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="username">Enter a Twitter username:</label>
+      <input type="text" id="username" name="username">
+      <button type="button" id="submit-btn">Submit</button>
+    </form>
+    <table id="data-table" style="display:none">
+      <thead>
+        <tr>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Type</th>
+          <th>Created Date Time</th>
+          <th>Created Date</th>
+          <th>Created Day</th>
+          <th>Created Hour</th>
+          <th>Twit ID</th>
+          <th>Twit Text</th>
+          <th>User ID</th>
+          <th>User Created Date</th>
+          <th>User Name</th>
+          <th>User Screen Name</th>
+          <th>User Mentions Name</th>
+          <th>User Mentions Screen Name</th>
+          <th>Country</th>
+          <th>Country Code</th>
+          <th>Coordinate Bound</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be added dynamically using JavaScript -->
+      </tbody>
+    </table>
+    <script>
+      const form = document.querySelector('form');
+      const submitBtn = document.querySelector('#submit-btn');
+      const table = document.querySelector('#data-table');
+
+      submitBtn.addEventListener('click', () => {
+        const username = document.querySelector('#username').value.trim();
+
+        // Fetch the CSV data
+        fetch('twitter_data.csv')
+          .then(response => response.text())
+          .then(data => {
+            // Parse the CSV data into an array of objects
+            const rows = data.trim().split('\n');
+            const headers = rows.shift().split(',');
+            const dataArray = rows.map(row => {
+              const values = row.split(',');
+              return headers.reduce((obj, key, index) => {
+                obj[key.trim()] = values[index].trim();
+                return obj;
+              }, {});
+            });
+
+            // Filter the data based on the username provided
+            const filteredDataArray = dataArray.filter(rowData => rowData['user_scr_name'] === username);
+
+            // Generate the table rows using the filtered data
+            const tableBody = table.querySelector('tbody');
+            tableBody.innerHTML = ''; // Clear the table body
+            filteredDataArray.forEach(rowData => {
+              const row = document.createElement('tr');
+              headers.forEach(header => {
+                const cell = document.createElement('td');
+                cell.textContent = rowData[header];
+                row.appendChild(cell);
+              });
+              tableBody.appendChild(row);
+            });
+
+            // Show the table if data is found
+            if (filteredDataArray.length > 0) {
+              table.style.display = 'table';
+            } else {
+              table.style.display = 'none';
+              alert('No data found for the provided username.');
+            }
+          })
+          .catch(error => console.error(error));
+      });
+    </script>
+  </body>
+</html>

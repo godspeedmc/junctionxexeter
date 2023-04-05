@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Depression Detector</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		label {
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		input[type="text"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+			margin-bottom: 20px;
+			width: 300px;
+			max-width: 100%;
+		}
+		button[type="submit"] {
+			padding: 10px 20px;
+			border-radius: 5px;
+			border: none;
+			background-color: #008CBA;
+			color: #FFFFFF;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		button[type="submit"]:hover {
+			background-color: #005F6B;
+		}
+		h2 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		.results {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		.results p {
+			margin-bottom: 20px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.depressed {
+			color: red;
+		}
+		.not-depressed {
+			color: green;
+		}
+		.resources {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		.resources ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.resources li {
+			margin-bottom: 10px;
+		}
+		.resources li a {
+			color: #008CBA;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		.resources li a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<h1>Depression Detector</h1>
+<form action="/analyze" method="post">
+	<label for="username">Instagram Username:</label>
+	<input type="text" name="username" id="username" required>
+	<button type="submit">Analyze</button>
+</form>
+
+{% if results %}
+	<div class="results">
+		<h2>Results for {{ username }}</h2>
+		<p>Depression score: {{ results.depression_score }}</p>
+		{% if results.is_depressed %}
+			<p class="depressed">This user might be depressed.</p>
+		{% else %}
+			<p class="not-depressed">This user is unlikely to be depressed.</p>
+		{% endif %}
+	</div>
+{% endif %}
+
+<div class="resources">
+	<h2>Resources</h2>
+	<ul>
+		<li><a href="https://www.nimh.nih.gov/health/topics/depression/index.shtml">National Institute of Mental Health: Depression</a></li>
+		<li><a href="https://suicidepreventionlifeline.org/">National Suicide Prevention Lifeline</a></li>
+		</ul>
+	</body>
+</html>
+	
+
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Carbon Footprint Calculator</title>
+  <style>
+    /* CSS styles for the form */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    
+    fieldset {
+      margin-bottom: 20px;
+    }
+    
+    legend {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    label {
+      display: inline-block;
+      width: 200px;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    
+    input[type="number"] {
+      font-size: 18px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    
+    button[type="submit"] {
+      font-size: 24px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    #results {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <h2>Carbon Footprint Calculator</h2>
+
+    <!-- Inputs for transportation -->
+    <fieldset>
+      <legend>Transportation</legend>
+      <label for="car">Car usage:</label>
+      <input type="number" id="car" name="car" min="0">
+      <label for="bus">Bus or train usage:</label>
+      <input type="number" id="bus" name="bus" min="0">
+      <!-- more inputs for transportation -->
+    </fieldset>
+
+    <!-- Inputs for energy consumption -->
+    <fieldset>
+      <legend>Energy Consumption</legend>
+      <label for="electricity">Electricity usage:</label>
+      <input type="number" id="electricity" name="electricity" min="0">
+      <label for="naturalgas">Natural gas usage:</label>
+      <input type="number" id="naturalgas" name="naturalgas" min="0">
+      <!-- more inputs for energy consumption -->
+    </fieldset>
+
+    <!-- Inputs for food choices -->
+    <fieldset>
+      <legend>Food Choices</legend>
+      <label for="meat">Meat consumption:</label>
+      <input type="number" id="meat" name="meat" min="0">
+      <label for="dairy">Dairy consumption:</label>
+      <input type="number" id="dairy" name="dairy" min="0">
+      <!-- more inputs for food choices -->
+    </fieldset>
+
+    <button type="submit">Calculate Carbon Footprint</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    // Define constants for carbon footprint calculations
+    const carEmissions = 0.2; // kg CO2 per km
+    const busEmissions = 0.1; // kg CO2 per km
+    const electricityEmissions = 0.5; // kg CO2 per kWh
+    const naturalGasEmissions = 0.2; // kg CO2 per
+    const meatEmissions = 2.5; // kg CO2 per kg
+const dairyEmissions = 0.9; // kg CO2 per kg
+
+// Get references to form elements
+const form = document.querySelector('form');
+const carInput = document.getElementById('car');
+const busInput = document.getElementById('bus');
+const electricityInput = document.getElementById('electricity');
+const naturalGasInput = document.getElementById('naturalgas');
+const meatInput = document.getElementById('meat');
+const dairyInput = document.getElementById('dairy');
+
+// Add event listener to form submit
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent form from submitting
+
+  // Get input values and calculate carbon footprint
+  const carEmissionsTotal = carInput.value * carEmissions;
+  const busEmissionsTotal = busInput.value * busEmissions;
+  const transportationEmissions = carEmissionsTotal + busEmissionsTotal;
+  const electricityEmissionsTotal = electricityInput.value * electricityEmissions;
+  const naturalGasEmissionsTotal = naturalGasInput.value * naturalGasEmissions;
+  const energyEmissions = electricityEmissionsTotal + naturalGasEmissionsTotal;
+  const meatEmissionsTotal = meatInput.value * meatEmissions;
+  const dairyEmissionsTotal = dairyInput.value * dairyEmissions;
+  const foodEmissions = meatEmissionsTotal + dairyEmissionsTotal;
+  const totalEmissions = transportationEmissions + energyEmissions + foodEmissions;
+
+  // Display results to the user
+  const resultsElement = document.getElementById('results');
+  resultsElement.innerHTML = `Your carbon footprint is ${totalEmissions.toFixed(2)} kg CO2e per day.`;
+
+  // Provide recommendations based on the carbon footprint
+  let recommendations = '';
+  if (totalEmissions < 10) {
+    recommendations = 'Great job! Your carbon footprint is very low.';
+  } else if (totalEmissions < 20) {
+    recommendations = 'You can reduce your carbon footprint by making some simple changes such as using public transportation more often or eating less meat.';
+  } else {
+    recommendations = 'Your carbon footprint is very high. Consider making significant changes to your transportation, energy consumption, and food choices.';
+  }
+
+  // Append recommendations to the results
+  const recommendationsElement = document.createElement('p');
+  recommendationsElement.innerHTML = recommendations;
+  resultsElement.appendChild(recommendationsElement);
+});
+</script>
+</body>
+</html>
+
+
