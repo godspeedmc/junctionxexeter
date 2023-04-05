@@ -3,6 +3,9 @@ Junction Hackathon
 
 Prototype 1: Twitter Sentiment Analysis 
 
+Dataset:
+https://drive.google.com/file/d/1O2zefrFPhbmNI7OGRjvo12IDzJ4HWEnh/view?usp=sharing
+
 
 A Flask web application that performs sentiment analysis on a user's tweets and categorizes their mood based on the sentiment score. The sentiment analysis is done using TextBlob, a Python library for processing textual data.
 
