@@ -44,37 +44,36 @@ Add more features such as data visualization and user authentication.
 ##
 Prototype 2: Depression Detector
 
-A prototype application that analyzes a user's social media activity to detect signs of depression. The application uses the Instagram API to gather the user's recent media items, and then analyzes the sentiment of the captions and comments of those items to calculate a depression score. If the depression score is above a certain threshold, the application determines that the user might be depressed.
-
-Build Instructions
-To build and run the Depression Detector application, you will need to follow these steps:
-
-1.Clone the repository to your local machine.
-2.Install the required dependencies by running the following command in your terminal:
-
-pip install -r requirements.txt
-
-3.Obtain an access token from the Instagram API. You can do this by following the steps outlined in the Instagram API documentation.
-4.Replace the ACCESS_TOKEN variable in app.py with your access token.
-5.Run the application by executing the following command in your terminal:
-
-python app.py
-
-6. Open your web browser and navigate to http://localhost:5000/ to use the Depression Detector application.
+This is a prototype for a Depression Detector application that analyzes an Instagram user's recent media items and comments to determine if they might be depressed.
 
 Dependencies
 
-The following dependencies are required to run the Depression Detector application:
+This application requires the following dependencies to be installed:
 
-Flask==2.1.2
-instagramy==4.4.2
-nltk==3.6.3
+Flask
+nltk
+Instagramy
 
-The required dependencies can be installed by running the following command in your terminal
+You can install these dependencies by running the following command:
 
-pip install -r requirements.txt
+pip install flask nltk instagramy
 
-Please note that this application was last tested with Python 3.9.6.
+Build Instructions
+
+To run this application, follow these steps:
+1. Clone the repository
+2. Navigate to the project directory
+3. Start the Flask server:(python app.py)
+4. Open your web browser and go to http://localhost:5000.
+5. Enter an Instagram username in the form and click the "Analyze" button to see the depression score and whether the user might be depressed.
+
+Note: You will need to obtain an Instagram API access token and add it to the app.py file to use this application. Instructions for obtaining an access token can be found on the Instagram Developer website.
+
+
+
+
+
+
 
 
 
