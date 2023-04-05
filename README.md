@@ -3,7 +3,7 @@ Junction Hackathon
 
 ######################################
 Prototype 1: Twitter Sentiment Analysis 
-#######################################
+######################################
 
 A Flask web application that performs sentiment analysis on a user's tweets and categorizes their mood based on the sentiment score. The sentiment analysis is done using TextBlob, a Python library for processing textual data.
 
@@ -44,7 +44,7 @@ Add more features such as data visualization and user authentication.
 
 ###############################
 Prototype 2: Depression Detector
-################################
+###############################
 
 A prototype application that analyzes a user's social media activity to detect signs of depression. The application uses the Instagram API to gather the user's recent media items, and then analyzes the sentiment of the captions and comments of those items to calculate a depression score. If the depression score is above a certain threshold, the application determines that the user might be depressed.
 
