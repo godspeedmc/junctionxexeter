@@ -9,9 +9,9 @@ A Flask web application that performs sentiment analysis on a user's tweets and 
 Dependencies
 To run the application, you need to have the following dependencies installed:
 
-Python 3.x
-Flask
-TextBlob
+-Python 3.x
+-Flask
+-TextBlob
 
 You can install Flask and TextBlob by running the following commands in your terminal:
 
